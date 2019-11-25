@@ -32,10 +32,14 @@ data Company = Company { companyName :: String }
 
 ---
 
-- [Simple Overloaded Record Fields (SORF)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/sorf), Simon PJ's original proposal
-- [Declared Overloaded Record Fields (DORF)](https://gitlab.haskell.org/ghc/ghc/wikis/records/declared-overloaded-record-fields), a counterpoint proposal by Anthony Clayden
-- [Overloaded Record Fields (Original)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/design), Adam Gundry
-- [Overloaded Record Fields (Redesign)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/redesign), Adam Gundry
+- [Simple Overloaded Record Fields (SORF)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/sorf)
+  - Simon PJ's original proposal
+- [Declared Overloaded Record Fields (DORF)](https://gitlab.haskell.org/ghc/ghc/wikis/records/declared-overloaded-record-fields)
+  - a counterpoint proposal by Anthony Clayden
+- [Overloaded Record Fields (Original)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/design)
+  - Adam Gundry
+- [Overloaded Record Fields (Redesign)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/redesign)
+  - Adam Gundry
 
 ---
 
