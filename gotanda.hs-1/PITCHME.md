@@ -8,6 +8,8 @@
 
 ## つらみ
 
+---
+
 よくあるつらみ
 
 ```haskell
@@ -22,13 +24,13 @@ data Company = Company { companyName :: String }
 
 ---
 
-## つらみ
-
 `name` って付けたいやん
 
 ---
 
 ## 提案
+
+---
 
 - [Simple Overloaded Record Fields (SORF)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/sorf), Simon PJ's original proposal
 - [Declared Overloaded Record Fields (DORF)](https://gitlab.haskell.org/ghc/ghc/wikis/records/declared-overloaded-record-fields), a counterpoint proposal by Anthony Clayden
@@ -41,8 +43,6 @@ data Company = Company { companyName :: String }
 
 ---
 
-## Overloaded Record Fields (Redesign)
-
 `#name` という特殊な記法で多相な関数が使えるようになる
 
 ```haskell
@@ -53,8 +53,6 @@ let me = Person "Kazuki"
 #name me -- > Kazuki
 ```
 --- 
-
-## Overloaded Record Fields (Redesign)
 
 大きい提案だったので分割された
 
@@ -68,8 +66,6 @@ let me = Person "Kazuki"
 
 ---
 
-## `DuplicateRecordFields`
-
 重複したレコードのラベルを定義できるようになる
 
 ```haskell
@@ -78,8 +74,6 @@ data Company = Company { name :: String }
 ```
 
 ---
-
-## `DuplicateRecordFields`
 
 関数的な使用はできない
 
@@ -91,8 +85,6 @@ name me
 
 ---
 
-## `DuplicateRecordFields`
-
 パターンマッチでは使える
 
 ```haskell
@@ -101,8 +93,6 @@ hello me
 ```
 
 ---
-
-## `DuplicateRecordFields`
 
 個人的には `DuplicateRecordFields` と `NamedFieldPuns` で大半のケースをまかなえる
 
@@ -117,8 +107,6 @@ hello me
 
 ---
 
-## `OverloadedLabels`
-
 `#name` という記法が使えるようになる
 
 ```haskell
@@ -126,8 +114,6 @@ hello me
 ```
 
 ---
-
-## `OverloadedLabels`
 
 そのためには準備が必要
 
@@ -155,14 +141,9 @@ Note:
 
 ---
 
-## Magic type classes
-
 全部に `IsLabel` のインスタンスを定義するのはしんどい
 
-
 ---
-
-## Magic type classes
 
 `HasField` クラスのインスタンスが自動的に生成されるようになった
 
@@ -175,8 +156,6 @@ instance HasField "name" Person String where
 
 ---
 
-## Magic type classes
-
 `HasField` なら `IsLabel` とすればよい
 
 ```haskell
@@ -185,8 +164,6 @@ instance HasField x r a => IsLabel x (r -> a) where
 ```
 
 ---
-
-## Magic type classes
 
 調べきれていないところ
 
@@ -199,8 +176,6 @@ instance HasField x r a => IsLabel x (r -> a) where
 ## Record Set Field Proposal
 
 ---
-
-## Record Set Field Proposal
 
 今のところ get しかできないので set もできるようにしよう
 
