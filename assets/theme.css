@@ -1,7 +1,15 @@
+.reveal {
+  font: "san-serif";
+}
+
 .reveal pre {
   width: fit-content;
 }
 
 .reveal pre code {
-  width: 100% !important;
+  width: 100%;
+}
+
+.reveal code {
+  font: monospace;
 }
