@@ -1,0 +1,7 @@
+.reveal pre {
+  width: fit-content;
+}
+
+.reveal pre code {
+  width: 100% !important;
+}
