@@ -1,5 +1,5 @@
 .reveal {
-  font: "san-serif";
+  font-family: san-serif;
 }
 
 .reveal pre {
@@ -11,5 +11,5 @@
 }
 
 .reveal code {
-  font: monospace;
+  font-family: monospace;
 }
