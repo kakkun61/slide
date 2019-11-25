@@ -2,34 +2,223 @@
 
 ## Gotanda.hs #1 @HARP
 
-## 岡本和樹
-
-### @kakkun61
+### 岡本和樹 @kakkun61
 
 ---
 
-## あらすじ
+## つらみ
 
-1. つらみ事例を上げる
-1. Proposal
-  - Overloaded Record Fields Proposal
-  - https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields
-1. 歴史
-  1. いくつかの不採用の提案
-  1. ORF
-    1. Part 1: DuplicateRecordFields (in GHC 8.0)
-    1. Part 2: OverloadedLabels (in GHC 8.0)
-    1. Part 3: Magic type classes (partly in GHC 8.2)
-1. DuplicateRecordFields
-  - 重複した定義と型が分かる場合に使える
-  - NamedFieldPans とよく使う（個人的に）
-1. OverloadedLabels
-  - IsLabel 型クラスのインスタンスだとアドホック多相な #foo 関数が使える
-1. Magic type classes
-  - 名前の付けられたフィールドがあると HasField 型クラスが自動的に生成される
-  - HasField 型クラスのインスタンスなら IsLabel 型のインスタンスであることを書ける
-    - https://github.com/iij-ii/postgresql-pure/blob/master/src/Database/PostgreSQL/Pure/Internal/IsLabel.hs
-      - これライブラリーに書くとまずい？
-        - インスタンスの多重定義の可能性が
-1. Record Set Field Proposal
-  - https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0158-record-set-field.rst
+よくあるつらみ
+
+```haskell
+data Person =
+  Person
+    { personName :: String
+    , personAge :: Word
+    , personCompany :: Maybe Company
+    }
+data Company = Company { companyName :: String }
+```
+
+---
+
+## つらみ
+
+`name` って付けたいやん
+
+---
+
+## 提案
+
+- [Simple Overloaded Record Fields (SORF)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/sorf), Simon PJ's original proposal
+- [Declared Overloaded Record Fields (DORF)](https://gitlab.haskell.org/ghc/ghc/wikis/records/declared-overloaded-record-fields), a counterpoint proposal by Anthony Clayden
+- [Overloaded Record Fields (Original)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/design), Adam Gundry
+- [Overloaded Record Fields (Redesign)](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields/redesign), Adam Gundry
+
+---
+
+## Overloaded Record Fields (Redesign)
+
+---
+
+## Overloaded Record Fields (Redesign)
+
+`#name` という特殊な記法で多相な関数が使えるようになる
+
+```haskell
+data Person = Person { name :: String }
+data Company = Company { name :: String }
+
+let me = Person "Kazuki"
+#name me -- > Kazuki
+```
+--- 
+
+## Overloaded Record Fields (Redesign)
+
+大きい提案だったので分割された
+
+1. `DuplicateRecordFields` (in GHC 8.0)
+1. `OverloadedLabels` (in GHC 8.0)
+1. Magic type classes (partly in GHC 8.2)
+
+---
+
+## `DuplicateRecordFields`
+
+---
+
+## `DuplicateRecordFields`
+
+重複したレコードのラベルを定義できるようになる
+
+```haskell
+data Person = Person { name :: String }
+data Company = Company { name :: String }
+```
+
+---
+
+## `DuplicateRecordFields`
+
+関数的な使用はできない
+
+```haskell
+let me = Person "Kazuki"
+name me
+-- Ambiguous occurrence ‘name’
+```
+
+---
+
+## `DuplicateRecordFields`
+
+パターンマッチでは使える
+
+```haskell
+hello Person { name = name } = "Hello, " ++ name ++ "."
+hello me
+```
+
+---
+
+## `DuplicateRecordFields`
+
+個人的には `DuplicateRecordFields` と `NamedFieldPuns` で大半のケースをまかなえる
+
+```haskell
+hello Person { name } = "Hello, " ++ name ++ "."
+hello me
+```
+
+---
+
+## `OverloadedLabels`
+
+---
+
+## `OverloadedLabels`
+
+`#name` という記法が使えるようになる
+
+```haskell
+#name me -- > "Kazuki"
+```
+
+---
+
+## `OverloadedLabels`
+
+そのためには準備が必要
+
+```haskell
+:set -XDataKinds -XFlexibleInstances -XMultiParamTypeClasses
+
+import GHC.OverloadedLabels (IsLabel (fromLabel))
+
+instance IsLabel "name" (Person -> String) where
+  fromLabel Person { name } = name
+```
+
+```haskell
+:set -XFlexibleContexts
+#name me :: String
+```
+
+Note:
+
+- 使用時、型注釈がないと `Ambiguous type variable ‘a0’ arising from a use of ‘print’`
+
+---
+
+## Magic type classes
+
+---
+
+## Magic type classes
+
+全部に `IsLabel` のインスタンスを定義するのはしんどい
+
+
+---
+
+## Magic type classes
+
+`HasField` クラスのインスタンスが自動的に生成されるようになった
+
+```haskell
+import GHC.Records (HasField (getField))
+
+instance HasField "name" Person String where
+  getField Person { name } = name
+```
+
+---
+
+## Magic type classes
+
+`HasField` なら `IsLabel` とすればよい
+
+```haskell
+instance HasField x r a => IsLabel x (r -> a) where
+  fromLabel = getField @x
+```
+
+---
+
+## Magic type classes
+
+調べきれていないところ
+
+- `instance HasField x r a => IsLabel x (r -> a)` はライブラリー内で書いてしまってよい？
+  - 他のライブラリーが同様のインスタンスを定義していたら衝突するのでは？
+- `instance HasField x r a => IsLabel x (r -> a)` は将来的には標準で定義される？
+
+---
+
+## Record Set Field Proposal
+
+---
+
+## Record Set Field Proposal
+
+今のところ get しかできないので set もできるようにしよう
+
+```haskell
+class HasField x r a | x r -> a where
+  hasField :: r -> (a -> r, a)
+-- もしくは
+  getField :: r -> a
+  setField :: r -> a -> r
+```
+
+---
+
+## 参考
+
+- [overloaded record fields · Wiki · Glasgow Haskell Compiler / GHC · GitLab](https://gitlab.haskell.org/ghc/ghc/wikis/records/overloaded-record-fields)
+- [ghc-proposals/0158-record-set-field.rst at master · ghc-proposals/ghc-proposals](https://github.com/ghc-proposals/ghc-proposals/blob/master/proposals/0158-record-set-field.rst)
+
+---
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/kakkun61/gitpitch/tree/master/gotanda.hs-1" property="cc:attributionName" rel="cc:attributionURL">岡本和樹（Kazuki Okamoto）</a> 作『<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">レコードのラベルの重複 - Gotanda.hs #1</span>』は<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">クリエイティブ・コモンズ 表示 - 非営利 4.0 国際 ライセンス</a>で提供されています。
