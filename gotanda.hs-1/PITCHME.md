@@ -24,7 +24,7 @@ data Company = Company { companyName :: String }
 
 ---
 
-`name` って付けたいやん
+`name` って名前にしたいやん
 
 ---
 
@@ -98,7 +98,7 @@ hello me
 
 ---
 
-個人的には `DuplicateRecordFields` と `NamedFieldPuns` で大半のケースを楽になる
+個人的には `DuplicateRecordFields` と `NamedFieldPuns` で大半のケースは楽になる
 
 ```haskell
 hello Person { name } = "Hello, " ++ name ++ "."
@@ -141,11 +141,11 @@ Note:
 
 ---
 
-## Magic type classes
+しかし、全部に `IsLabel` のインスタンスを定義するのはしんどい
 
 ---
 
-全部に `IsLabel` のインスタンスを定義するのはしんどい
+## Magic type classes
 
 ---
 
@@ -160,11 +160,33 @@ instance HasField "name" Person String where
 
 ---
 
-`HasField` なら `IsLabel` とすればよい
+`HasField` なら `IsLabel` であるとすればよい
 
 ```haskell
 instance HasField x r a => IsLabel x (r -> a) where
   fromLabel = getField @x
+```
+
+---
+
+```haskell
+:set -XDuplicateRecordFields -XOverloadedLabels
+:set -XFlexibleContexts -XFlexibleInstances -XMultiParamTypeClasses
+
+import GHC.OverloadedLabels (IsLabel (fromLabel))
+import GHC.Records (HasField (getField))
+
+instance HasField x r a => IsLabel x (r -> a) where
+  fromLabel = getField @x
+
+data Person = Person { personName :: String }
+data Company = Company { companyName :: String }
+
+let me = Person "Kazuki"
+let iij = Company "IIJ"
+
+#name me :: String
+#name iij :: String
 ```
 
 ---
