@@ -13,7 +13,7 @@
 - Overloaded Record Fields (Redesign) |
 - `DuplicateRecordFields` |
 - `OverloadedLabels` |
-- Magit type class |
+- Magic type classes |
 - Record Set Field Proposal |
 
 ---
