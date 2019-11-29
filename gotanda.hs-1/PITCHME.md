@@ -208,8 +208,8 @@ import GHC.Records (HasField (getField))
 instance HasField x r a => IsLabel x (r -> a) where
   fromLabel = getField @x
 
-data Person = Person { personName :: String }
-data Company = Company { companyName :: String }
+data Person = Person { name :: String }
+data Company = Company { name :: String }
 
 let me = Person "Kazuki"
 let iij = Company "IIJ"
