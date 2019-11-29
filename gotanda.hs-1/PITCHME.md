@@ -34,7 +34,7 @@ data Person =
 data Company = Company { companyName :: String }
 ```
 
-Name:
+Note:
 
 - 接頭辞が必要
 
