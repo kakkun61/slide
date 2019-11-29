@@ -14,7 +14,7 @@
 - `DuplicateRecordFields` |
 - `OverloadedLabels` |
 - Magit type class |
-- Record Set Field Proposal
+- Record Set Field Proposal |
 
 ---
 
