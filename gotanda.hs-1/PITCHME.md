@@ -6,6 +6,18 @@
 
 ---
 
+## もくじ
+
+- つらみ |
+- GHC 提案 |
+- Overloaded Record Fields (Redesign) |
+- `DuplicateRecordFields` |
+- `OverloadedLabels` |
+- Magit type class |
+- Record Set Field Proposal
+
+---
+
 ## つらみ
 
 ---
@@ -22,13 +34,19 @@ data Person =
 data Company = Company { companyName :: String }
 ```
 
+Name:
+
+- 接頭辞が必要
+
 ---
 
 `name` って名前にしたいやん
 
+接頭辞付けたくないやん
+
 ---
 
-## 提案
+## GHC 提案
 
 ---
 
@@ -56,6 +74,11 @@ data Company = Company { name :: String }
 let me = Person "Kazuki"
 #name me -- > Kazuki
 ```
+
+Note:
+
+- シンタックスハイライトがくずれている
+
 --- 
 
 大きい提案だったので分割された
@@ -96,6 +119,10 @@ hello Person { name = name } = "Hello, " ++ name ++ "."
 hello me
 ```
 
+Note:
+
+- `name = name` と書くのはダルい
+
 ---
 
 個人的には `DuplicateRecordFields` と `NamedFieldPuns` で大半のケースは楽になる
@@ -129,6 +156,8 @@ import GHC.OverloadedLabels (IsLabel (fromLabel))
 instance IsLabel "name" (Person -> String) where
   fromLabel Person { name } = name
 ```
+
+使用側
 
 ```haskell
 :set -XFlexibleContexts
