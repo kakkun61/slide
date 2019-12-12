@@ -119,6 +119,12 @@ Build completed in 49m31s
 
 ---
 
+## スライドソース
+
+https://github.com/kakkun61/gitpitch/tree/master/ghc-workshop-2019
+
+---
+
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc.svg" /></a>
 
 <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/kakkun61/gitpitch/tree/master/ghc-workshop-2019" property="cc:attributionName" rel="cc:attributionURL">岡本和樹（Kazuki Okamoto）</a>作『<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Hadrian - GHC 勉強会 2019</span>』は<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">クリエイティブ・コモンズ 表示 - 非営利 4.0 国際 ライセンス</a>で提供されています。
