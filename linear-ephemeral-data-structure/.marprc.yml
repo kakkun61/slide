@@ -1,0 +1,3 @@
+# .marprc.yml
+theme: theme.css
+output: index.html

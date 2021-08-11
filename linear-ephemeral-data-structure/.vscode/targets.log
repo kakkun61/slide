@@ -1,0 +1,335 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+ 
+# GNU Make 4.3
+# Built for Windows32
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Wed Aug 11 14:53:09 2021
+
+# Variables
+
+# environment
+RUSTUP_HOME = H:\rust\rustup
+# environment
+JAVA_HOME = C:\Program Files\OpenJDK\jdk-13.0.2
+# environment
+SYSTEMDRIVE = C:
+# environment
+LC_ALL = C
+# environment
+USERPROFILE = C:\Users\kazuki
+# environment
+BAZEL_VC = C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC
+# environment
+KINECTSDK10_DIR = C:\Program Files\Microsoft SDKs\Kinect\v1.8\
+# environment
+LOCALAPPDATA = C:\Users\kazuki\AppData\Local
+# environment
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-c60c3163-196b-45a7-82b3-ad919c4a5839-sock
+# environment
+BAZEL_VS = C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools
+# environment
+VSCODE_CWD = C:\Program Files\Microsoft VS Code
+# environment
+CHOCOLATEYINSTALL = H:\chocolatey
+# environment
+SYSTEMROOT = C:\WINDOWS
+# environment
+PROCESSOR_LEVEL = 25
+# environment
+PSMODULEPATH = C:\Users\kazuki\Documents\WindowsPowerShell\Modules
+# default
+MAKE_COMMAND := H:/chocolatey/lib/make/tools/install/bin/make.exe
+# automatic
+@D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_24896_IOMFTKVICLMGWUFV
+# environment
+VSCODE_BROWSER_CODE_LOADING = bypassHeatCheck
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# automatic
+%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
+# automatic
+^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
+# environment
+VSCODE_LOG_STACK = false
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\kazuki\AppData\Roaming\Code\CachedData\379476f0e13988d90fab105c5c19e7abc8b1dea8
+# environment
+LANG = C
+# default
+.LOADED := 
+# environment
+TMP = C:\Users\kazuki\AppData\Local\Temp
+# default
+.INCLUDE_DIRS = .
+# environment
+PROCESSOR_ARCHITEW6432 = AMD64
+# makefile
+MAKEFLAGS = pqrR
+# environment
+ONEDRIVE = C:\Users\kazuki\OneDrive
+# environment
+POWERSHELL_DISTRIBUTION_CHANNEL = MSI:Windows 10 Pro
+# makefile
+CURDIR := h:/Projects/slide/linear-ephemeral-data-structure
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
+*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+# environment
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+MFLAGS = -pqrR
+# default
+.SHELLFLAGS := -c
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# automatic
++D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
+# automatic
+@F = $(notdir $@)
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+VSCODE_PID = 24896
+# automatic
+?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# environment
+SCOOP_GLOBAL = H:\scoop
+# automatic
+*F = $(notdir $*)
+# automatic
+<D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
+# environment
+SCOOP = H:\scoop
+# environment
+VSCODE_NLS_CONFIG = {"locale":"ja","availableLanguages":{"*":"ja"},"_languagePackId":"a88c80bd84ba28ea5414194de67b89dd.ja","_translationsConfigFile":"C:\\Users\\kazuki\\AppData\\Roaming\\Code\\clp\\a88c80bd84ba28ea5414194de67b89dd.ja\\tcf.json","_cacheRoot":"C:\\Users\\kazuki\\AppData\\Roaming\\Code\\clp\\a88c80bd84ba28ea5414194de67b89dd.ja","_resolvedLanguagePackCoreLocation":"C:\\Users\\kazuki\\AppData\\Roaming\\Code\\clp\\a88c80bd84ba28ea5414194de67b89dd.ja\\379476f0e13988d90fab105c5c19e7abc8b1dea8","_corruptedFile":"C:\\Users\\kazuki\\AppData\\Roaming\\Code\\clp\\a88c80bd84ba28ea5414194de67b89dd.ja\\corrupted.info","_languagePackSupport":true}
+# environment
+ONEDRIVECONSUMER = C:\Users\kazuki\OneDrive
+# default
+MAKE_HOST := Windows32
+# environment
+ANDROID_HOME = H:\android
+# environment
+PROGRAMDATA = C:\ProgramData
+# default
+SHELL := sh.exe
+# environment
+HOMEPATH = \Users\kazuki
+# default
+MAKECMDGOALS := all
+# environment
+RUBYOPT = -Eutf-8
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+COMSPEC = C:\WINDOWS\system32\cmd.exe
+# environment
+WINDIR = C:\WINDOWS
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = C:\Program Files\AdoptOpenJDK\jre-15.0.2.7-hotspot\bin;H:\tools\ruby30\bin;C:\Python39\Scripts\;C:\Python39\;H:\tools\ruby26\bin;H:\tools\ruby27\bin;C:\Python38\Scripts\;C:\Python38\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\System32;C:\Windows;C:\Windows\System32\wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Kensington\TrackballWorks;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\dotnet\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\PostgreSQL\12\bin;H:\chocolatey\bin;C:\PROGRA~1\JPKI;C:\Program Files\OpenJDK\jdk-12.0.2\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Essential\ADB\;C:\Program Files\Git\cmd;H:\chocolatey\lib\gsudo\bin\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\dotnet\;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\Program Files\PostgreSQL\13\bin;C:\Program Files\OpenJDK\jdk-15.0.2\bin;C:\Strawberry\perl\bin;C;C:\Program Files\PowerShell\7\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs\;H:\ghcups\cabal-3.4.0.0;H:\ghcups\ghc-8.10.4\bin;H:\Scoop\shims;H:\rust\cargo\bin;C:\Users\kazuki\bin;C:\Users\kazuki\.dotnet\tools;H:\programs\wxMSW-3.1.4\lib\vc14x_x64_dll;C:\Program Files (x86)\Elm\0.19.1\bin;C:\Program Files\PowerShell\6;C:\Program Files\OpenSCAD;C:\Users\kazuki\AppData\Roaming\cabal\bin;C:\Users\kazuki\AppData\Roaming\local\bin;C:\Users\kazuki\AppData\Local\Microsoft\WindowsApps;H:\tools\msys64;H:\tools\mysql\current\bin;C:\Program Files (x86)\Essential\ADB\;C:\Program Files (x86)\GitHub CLI\;C:\Users\kazuki\AppData\Local\Yarn\bin;C:\Program Files\CMake\bin;C:\Users\kazuki\AppData\Local\GitHubDesktop\bin;C:\Users\kazuki\.dotnet\tools;C:\Users\kazuki\.dotnet\tools;C:\Program Files\NASM;C:\Program Files\doxygen\bin;C:\Users\kazuki\AppData\Roaming\npm;C:\Users\kazuki\AppData\Roaming\npm
+# environment
+COMPUTERNAME = MAIHAMA
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# environment
+PROMPT = $P$G
+# environment
+WXWIN = H:\programs\wxMSW-3.1.4
+# environment
+CARGO_HOME = H:\rust\cargo
+# environment
+CHOCOLATEYLASTPATHUPDATE = 132563484026449630
+# environment
+LOGONSERVER = \\MAIHAMA
+# environment
+CHOCOLATEYPATH = H:\Chocolatey
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+USERNAME = kazuki
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# automatic
+?F = $(notdir $?)
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW;.PY;.PYW
+# automatic
++F = $(notdir $+)
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERDOMAIN = MAIHAMA
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+VS140COMNTOOLS = C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
+# environment
+OS = Windows_NT
+# environment
+AMDRMSDKPATH = C:\Program Files\AMD\RyzenMasterSDK\
+# makefile
+.DEFAULT_GOAL := slide.html
+# default
+MAKE_VERSION := 4.3
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# environment
+USERDOMAIN_ROAMINGPROFILE = MAIHAMA
+# environment
+NUMBER_OF_PROCESSORS = 12
+# environment
+PUBLIC = C:\Users\Public
+# environment
+SSH_AGENT_PID = 12052
+# environment
+APPDATA = C:\Users\kazuki\AppData\Roaming
+# environment
+HOMEDRIVE = C:
+# environment
+GTK_BASEPATH = C:\Program Files (x86)\GtkSharp\2.12\
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+STACK_ROOT = H:\stack
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+GHCUPSINSTALL = H:\ghcups
+# environment
+HOME = C:\Users\kazuki
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+TEMP = C:\Users\kazuki\AppData\Local\Temp
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\bc4ceece813a7c769e4de60605d92455-1.59.0-main-sock
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# default
+SUFFIXES := 
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+SESSIONNAME = Console
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+# environment
+PROCESSOR_REVISION = 2100
+# environment
+CHOCOLATEYTOOLSLOCATION = H:\tools
+# environment
+PROCESSOR_IDENTIFIER = AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD
+# variable set hash-table stats:
+# Load=117/1024=11%, Rehash=0, Collisions=11/144=8%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (key h:/Projects/slide/linear-ephemeral-data-structure, mtime 1628654306): 15 files, no impossibilities.
+
+# 15 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+package-lock.json:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+slide.md:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2021-08-10 09:49:29
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+slide.html: slide.md theme.css package.json package-lock.json
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 2):
+	npm run make
+
+# Not a target:
+package.json:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+theme.css:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=9/1024=1%, Rehash=0, Collisions=0/23=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 18 / storage = 177 B / avg = 9 B
+# current buf: size = 8174 B / used = 177 B / count = 18 / avg = 9 B
+
+# strcache performance: lookups = 28 / hit rate = 35%
+# hash-table stats:
+# Load=18/8192=0%, Rehash=0, Collisions=0/28=0%
+# Finished Make data base on Wed Aug 11 14:53:09 2021
+
+ 

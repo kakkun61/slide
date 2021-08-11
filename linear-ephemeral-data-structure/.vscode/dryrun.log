@@ -1,0 +1,5 @@
+make.exe --dry-run --always-make --keep-going --print-directory
+make: Entering directory 'h:/Projects/slide/linear-ephemeral-data-structure'
+npm run make
+make: Leaving directory 'h:/Projects/slide/linear-ephemeral-data-structure'
+ 
