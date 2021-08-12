@@ -1,0 +1,48 @@
+# 岡本和樹の発表資料
+
+- 線形型の刹那的不変データ構造への利用
+  - [スライド](linear-ephemeral-data-structure)
+  - [Haskell Day 2021](https://haskell.jp/haskell-day-2021/)
+  - 2021.11.07
+  - 作成中
+- Hadrian
+  - [スライド](https://gitpitch.com/kakkun61/gitpitch?p=ghc-workshop-2019)
+  - GHC 勉強会 2019
+  - 2019.12.11
+- レコードのラベルの重複
+  - [スライド](https://gitpitch.com/kakkun61/gitpitch?p=gotanda.hs-1)
+  - [Gotanda.hs #1 @HERP](https://herp-inc.connpass.com/event/153651/)
+  - 2019.11.29
+- すごい Haskell 読書会 in 大阪 #5
+  - [スライド](https://www.slideshare.net/kakkun61/haskell-in-5)
+  - すごい Haskell 読書会 in 大阪 #5
+  - 2013.01.30
+- Haskell 入門書を読んだその後は
+  - [スライド](https://www.slideshare.net/kakkun61/2-lt)
+  - 第2回関数型言語勉強会
+  - 2012.11.24
+- L1 グランプリ Haskell
+  - [スライド](https://www.slideshare.net/kakkun61/it-vol-11-l1-haskell)
+  - 姫路 IT 系勉強会 Vol. 11
+  - 2012.11.17
+- 競技プログラミングからひとつまみ
+  - [スライド](https://www.slideshare.net/kakkun61/osc-kansai-kyoto-2012-lt)
+  - [OSC Kansai @Kyoto 2012](https://www.ospn.jp/osc2012-kyoto/)
+  - 2012.08.03-04
+- プログラミングコンテストという名のオンラインゲームがあるらしい
+  - [スライド](https://www.slideshare.net/kakkun61/ss-13375724)
+  - [動画](https://youtu.be/thj4BwoyH4A?t=37)
+  - 姫路 IT 系勉強会 Vol.6
+  - 2012.06.16
+- JavaOne 参加セッションの感想なんかぐだぐだと
+  - [スライド](https://www.slideshare.net/kakkun61/java-201206-javaone)
+  - [関西 Java エンジニアの会（関ジャバ）'12 6月度 JavaOne 報告会！](https://sites.google.com/a/kanjava.com/www/home/event20120608)
+  - 2012.06.08
+- Simple Kana to Kanji converter
+  - [スライド](https://www.slideshare.net/kakkun61/it-vol4-skk-12639748)
+  - 姫路 IT 系勉強会 Vol.4
+  - 2012.04.21
+- SKK
+  - [スライド](https://www.slideshare.net/kakkun61/2011-7653817)
+  - [オープンースカンファレンス 2011 関西 @神戸](https://www.ospn.jp/osc2011-kobe/)
+  - 2011.04.16
