@@ -35,8 +35,8 @@ _class: lead
 # 線形型とは
 
 - ｢値を一度だけ使う｣
-  - ダメ 2回使う
-  - ダメ 1回も使わない
+  - 2回使う → ダメ
+  - 1回も使わない → ダメ
 - コンパイラーがより厳密に型検査できてうれしい
 - コンパイラーがよりよい最適化ができてうれしい
 
@@ -104,7 +104,7 @@ f a = (a, a)
     • In an equation for ‘f’: f a = (a, a)
 ```
 
-`f` の中で `a` を2回使っているのでエラーになる
+- `f` の中で `a` を2回使っているのでエラーになる
 
 ----
 
@@ -122,13 +122,13 @@ f a = (1, 1)
     • In an equation for ‘f’: f a = (1, 1)
 ```
 
-使用しないときも同じエラーになる
+- 使用しないときも同じエラーになる
 
 ----
 
 # GHC での線形型 › 部分型多相
 
-multiplicity に関しても部分型多相はない
+- multiplicity に関しても部分型多相はない
 
 ```haskell
 f :: Int %1-> (Int, Int)
@@ -151,7 +151,7 @@ h = f
 
 # GHC での線形型 › イータ変換
 
-これは妥当
+- これは妥当
 
 ```haskell
 f :: Int %1-> (Int, Int)
@@ -168,7 +168,7 @@ h a = f a
 
 # GHC での線形型 › パラメーター多相
 
-multiplicity の部分も型変数にできる
+- multiplicity の部分も型変数にできる
 
 ```haskell
 f :: a %m-> (a, Int)
@@ -191,7 +191,7 @@ consume False -> ()
 consume True -> ()
 ```
 
-下記のように変えるとエラーになる
+- 下記のように変えるとエラーになる
 
 ```haskell
 consume :: Bool %1-> ()
@@ -204,9 +204,23 @@ consume _ -> ()
 
 # GHC での線形型 › let-in と case-of
 
-- let-in 式での束縛は値が複数回使われたことにされる
-- case-of 式での束縛も値が複数回使われたことにされる
-  - 今の GHC での実装では
+- let-in 式・case-of 式での束縛は値が複数回使われたことにされる
+
+```haskell
+idl :: a %1-> a
+idl a = a
+
+f :: a %1-> a
+f a = let b = idl a in b
+```
+
+```
+<interactive>:3:18: error:
+    • Couldn't match type ‘'Many’ with ‘'One’
+        arising from multiplicity of ‘a’
+    • In an equation for ‘f’: f a = let b = idl a in b
+```
+
 - 代わりの方法は後述
 
 ----
@@ -229,6 +243,50 @@ consume _ -> ()
 
 ----
 
+# linear-base › ローカル束縛
+
+- `(Prelude.Linear.&)` と lambda-case 言語拡張を使う
+  - `(Prelude.Linear.&)` は `flip ($)` の線形版
+
+```haskell
+(&) :: a %1-> (a %1-> b) %1-> b
+```
+
+```haskell
+{-# LANGUAGE LambdaCase #-}
+
+import qualified Prelude.Linear as PL
+
+idl :: a %1-> a
+idl a = a
+
+f :: a %1-> a
+f a = idl a PL.& \case b -> b
+```
+
+----
+
+# linear-base › `Ur`
+
+- 線形型を扱う上でキモとなるデータ型
+
+```haskell
+{-# LANGUAGE GADTs #-}
+
+data Ur a where
+  Ur :: a -> Ur a
+```
+
+- 線形型がなければこれは下記と同じ
+
+```haskell
+data Ur a = Ur a
+```
+
+- これがどうキモなのか？
+
+----
+
 # linear-base › 線形性の伝播
 
 線形性はデータ型のフィールドに伝播する
@@ -240,7 +298,7 @@ data Book = Book Title Author
 
 f :: Book %1-> (Title, Author, String)
 f (Book t a) = (t, a, "")
--- f (Book t a) = (t, a, t) -- これはダメ
+-- f (Book t a) = (t, a, t) -- bad
 ```
 
 ----
@@ -251,7 +309,7 @@ f (Book t a) = (t, a, "")
    - generalized algebraic data type
    - 一般化代数的データ型
 
-先の `Book` を GADT にする
+- 先の `Book` を GADT にする
 
 ```haskell
 data Book where
@@ -260,62 +318,45 @@ data Book where
 
 ```haskell
 f :: Book %1-> (Title, Author, String)
-f (Book t a) = (t, a, t) -- これも OK に
+f (Book t a) = (t, a, t) -- OK
 ```
 
 ----
 
-# linear-base › `Ur`
+# linear-base › `Ur` の使い道 1
 
-GADT で定義されたデータ型で線形性の伝播を止めるために使う
-
-```haskell
-{-# LANGUAGE GADTs #-}
-
-data Ur a where
-  Ur :: a -> Ur a
-```
-
-線形型がなければこれは下記と同じ
+- 線形性の伝播を止めるために使う
 
 ```haskell
-data Ur a = Ur a
+f :: Ur Foo %1-> (Bar, Bar)
+f (Ur foo) = let bar = buzz foo in (bar, bar)
 ```
 
 ----
 
 # linear-base › 返り値の線形性
 
-このような線形型恒等関数 `idl` があるとき
+- このような線形型恒等関数 `idl` があるとき
 
 ```haskell
 idl :: a %1-> a
 idl a = a
 ```
 
-次のような `idl'` は妥当かどうか？
+- 次のような `idl'` は妥当かどうか？
 
 ```haskell
 idl' :: a %1-> a
 idl' a = id (idl a)
 ```
 
-----
-
-# linear-base › 返り値も線形性
-
-```haskell
-idl' :: a %1-> a
-idl' a = id (idl a)
-```
-
-これはエラーになる
+- これはエラーになる
 
 ----
 
 # linear-base › 返り値への伝播を止めたい
 
-返り値を何回も使っていいときは？
+- 返り値を何回も使っていいときは？
 
 ```haskell
 notl :: Bool %1-> Bool
@@ -323,14 +364,14 @@ notl False = True
 notl True = False
 
 notl' :: Bool %1-> Bool
-notl' a = id (notl a) -- エラー
+notl' a = id (notl a) -- bad
 ```
 
 ----
 
-# linear-base › 返り値への伝播を止める
+# linear-base › `Ur` の使い道 2
 
-これも `Ur` を使う
+- これも `Ur` を使う
 
 ```haskell
 notl :: Bool %1-> Ur Bool
@@ -359,12 +400,12 @@ notl' a = notl a LP.& \case Ur a -> (a, a)
   - 動くけど期待通りの計算量にならない
 
 ```haskell
--- ダメな例
+-- bad
 ops =
   let
     q0 = empty
     q1 = enqueue 1 q0
-    q1' = enqueue 2 q0 -- q0 を2回使っている
+    q1' = enqueue 2 q0 -- q0 is used twice
     Just (a, _) = dequeue q1
     Just (b, _) = dequeue q1'
   in
@@ -427,7 +468,7 @@ empty k = k (Queue [] [])
 
 - 空キューの作成
 - GHC では線形型は線形型関数なので継続にする
-- `Queue [] []` を一度しか使えない
+- 継続の中では `Queue [] []` を一度しか使えない
 
 ----
 
@@ -456,6 +497,8 @@ check [] m = Queue (reverse m) []
 check l m = Queue l m
 ```
 
+- 左のリストが空になれば右を反転して左にする
+
 ----
 
 # 線形型＋刹那的データ構造 › dequeue
@@ -474,10 +517,12 @@ check l m = Queue l m
 
 # 線形型＋刹那的データ構造 › 使ってみる
 
+- 0 を enqueue して dequeue するだけの例
+
 ```haskell
 it "empty → enqueue → dequeue" $ do
   let
-    f :: Queue Int %1 -> Ur Int
+    f :: Queue Int %1-> Ur Int
     f q =
       enqueue 0 q PL.& \q ->
       dequeue q PL.& \(Ur (Just a), q) ->
@@ -485,5 +530,3 @@ it "empty → enqueue → dequeue" $ do
     Ur a = empty f
   a `shouldBe` 0
 ```
-
-- 0 を enqueue して dequeue するだけの例
