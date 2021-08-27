@@ -34,11 +34,10 @@ _class: lead
 
 # 線形型とは
 
-- GHC 9.0 で言語拡張としてサポート
 - ｢値を一度だけ使う｣
   - ダメ 2回使う
   - ダメ 1回も使わない
-- より厳密に型検査をしてもらえてうれしい
+- コンパイラーがより厳密に型検査できてうれしい
 - コンパイラーがよりよい最適化ができてうれしい
 
 ----
@@ -74,7 +73,7 @@ _class: lead
 
 # GHC での線形型
 
-- linear types 言語拡張（GHC 9.2 以降）
+- linear types 言語拡張（GHC 9.0 以降）
 - $a \multimap b$ を `a %1-> b` と書く
 - `a %1-> b` は `a %'One-> b` の別名
   - `'One` は data kinds 拡張によって持ち上げられた型
@@ -83,19 +82,10 @@ _class: lead
 - これにともなって `a -> b` は `FUN 'Many a b` の別名に
 
 ```haskell
-type FUN :: Multiplicity -> forall (r1 r2 :: RuntimeRep). TYPE r1 -> TYPE r2
+type FUN ::
+  Multiplicity -> forall (r1 r2 :: RuntimeRep). TYPE r1 -> TYPE r2
 
 data Multiplicity = One | Many
-```
-
-----
-
-# GHC での線形型 › REPL で試す
-
-linear types 言語拡張を有効にして REPL を起動
-
-```
-ghc --interactive -XLinearTypes
 ```
 
 ----
@@ -172,7 +162,7 @@ h a = f a
 -- h = f -- これはダメ
 ```
 
-安易にイータ変換してはいけない
+⚠️ 安易にイータ変換してはいけない
 
 ----
 
@@ -208,26 +198,16 @@ consume :: Bool %1-> ()
 consume _ -> ()
 ```
 
-ワイルドカードには注意
+⚠️ ワイルドカードには注意
 
 ----
 
 # GHC での線形型 › let-in と case-of
 
 - let-in 式での束縛は値が複数回使われたことにされる
-- case-of 式でのパターンマッチは値が複数回使われたことにされる
+- case-of 式での束縛も値が複数回使われたことにされる
   - 今の GHC での実装では
-- 代わりにこうする
-  - `Prelude.Linear` は linear-base パッケージのモジュール
-  - `(PL.&)` は `(Data.Function.&)` の線形型版
-
-```haskell
-{-# LANGUAGE LambdaCase #-}
-
-import qualified Prelude.Linear as PL
-
-qux = foo bar PL.& \case Foo buzz -> buzz
-```
+- 代わりの方法は後述
 
 ----
 
@@ -244,14 +224,14 @@ qux = foo bar PL.& \case Foo buzz -> buzz
 # linear-base ライブラリー
 
 - 線形型基本ライブラリー
-  - Tweag 社が提供
-  - GHC への線形型拡張を提案・実装した会社
+  - Tweag が提供
+  - Tweag は GHC への線形型拡張を提案・実装した会社
 
 ----
 
 # linear-base › 線形性の伝播
 
-データ型のフィールドに線形性は伝播する
+線形性はデータ型のフィールドに伝播する
 
 ```haskell
 type Title = String
@@ -267,7 +247,9 @@ f (Book t a) = (t, a, "")
 
 # linear-base › 線形性の伝播を止める
 
-GADT（generalized algebraic data type・一般化代数的データ型）で `->` にすると伝播は止まる
+- GADTで `->` にすると伝播は止まる
+   - generalized algebraic data type
+   - 一般化代数的データ型
 
 先の `Book` を GADT にする
 
@@ -333,7 +315,7 @@ idl' a = id (idl a)
 
 # linear-base › 返り値への伝播を止めたい
 
-返り値は何回も使っていいときは？
+返り値を何回も使っていいときは？
 
 ```haskell
 notl :: Bool %1-> Bool
@@ -374,6 +356,7 @@ notl' a = notl a LP.& \case Ur a -> (a, a)
 # 刹那的データ構造とは
 
 - 計算量の関係から一度しか値を使うことができない
+  - 動くけど期待通りの計算量にならない
 
 ```haskell
 -- ダメな例
@@ -435,29 +418,6 @@ data Queue a where
 
 ----
 
-# 線形型＋刹那的データ構造 › 操作
-
-```haskell
-empty :: (Queue a %1-> Ur b) %1 -> Ur b
-empty k = k (Queue [] [])
-
-null :: Queue a %1-> (Ur Bool, Queue a)
-null (Queue l m) = (Ur (P.null l), Queue l m)
-
-enqueue :: a -> Queue a %1-> Queue a
-enqueue a (Queue l m) = check l (a:m)
-
-dequeue :: Queue a %1-> (Ur (Maybe a), Queue a)
-dequeue (Queue (a:l) m) = (Ur (Just a), check l m)
-dequeue (Queue l m) = (Ur Nothing, Queue l m)
-
-check :: [a] -> [a] -> Queue a
-check [] m = Queue (reverse m) []
-check l m = Queue l m
-```
-
-----
-
 # 線形型＋刹那的データ構造 › empty
 
 ```haskell
@@ -485,12 +445,22 @@ null (Queue l m) = (Ur (P.null l), Queue l m)
 
 ----
 
-# 線形型＋刹那的データ構造 › enqueue・dequeue
+# 線形型＋刹那的データ構造 › enqueue
 
 ```haskell
 enqueue :: a -> Queue a %1-> Queue a
 enqueue a (Queue l m) = check l (a:m)
 
+check :: [a] -> [a] -> Queue a
+check [] m = Queue (reverse m) []
+check l m = Queue l m
+```
+
+----
+
+# 線形型＋刹那的データ構造 › dequeue
+
+```haskell
 dequeue :: Queue a %1-> (Ur (Maybe a), Queue a)
 dequeue (Queue (a:l) m) = (Ur (Just a), check l m)
 dequeue (Queue l m) = (Ur Nothing, Queue l m)
@@ -499,9 +469,6 @@ check :: [a] -> [a] -> Queue a
 check [] m = Queue (reverse m) []
 check l m = Queue l m
 ```
-
-- `enqueue` は見たまま
-- `dequeue` も結果は `Ur` にくるむ
 
 ----
 
