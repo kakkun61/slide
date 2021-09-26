@@ -245,12 +245,8 @@ f a = let b = idl a in b
 
 # linear-base › ローカル束縛
 
-- `(Prelude.Linear.&)` と lambda-case 言語拡張を使う
+- `(Prelude.Linear.&)` を使う
   - `(Prelude.Linear.&)` は `flip ($)` の線形版
-
-```haskell
-(&) :: a %1-> (a %1-> b) %1-> b
-```
 
 ```haskell
 {-# LANGUAGE LambdaCase #-}
@@ -261,8 +257,10 @@ idl :: a %1-> a
 idl a = a
 
 f :: a %1-> a
-f a = idl a PL.& \case b -> b
+f a = idl a PL.& \b -> b
 ```
+
+- パターンマッチをするときは lambda-case 言語拡張を使う
 
 ----
 
@@ -305,7 +303,7 @@ f (Book t a) = (t, a, "")
 
 # linear-base › 線形性の伝播を止める
 
-- GADTで `->` にすると伝播は止まる
+- GADT で `->` にすると伝播は止まる
    - generalized algebraic data type
    - 一般化代数的データ型
 
