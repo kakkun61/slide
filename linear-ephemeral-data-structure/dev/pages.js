@@ -6,7 +6,8 @@ const files = [
   'index.html',
   'theme.css',
   'pfds.jpg',
-  'sakulambda.svg'
+  'sakulambda.svg',
+  'laser.svg'
 ];
 
 fs.mkdirSync(out, { recursive: true });
