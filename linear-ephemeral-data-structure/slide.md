@@ -524,7 +524,7 @@ it "empty → enqueue → dequeue" $ do
     f q =
       enqueue 0 q PL.& \q ->
       dequeue q PL.& \(Ur (Just a), q) ->
-      q `lseq` Ur a
+      q `PL.lseq` Ur a
     Ur a = empty f
   a `shouldBe` 0
 ```
