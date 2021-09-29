@@ -22,7 +22,7 @@ section {
   font-family: 'メイリオ', sans-serif;
   font-size: 50px;
   font-weight: normal;
-  cursor: url('laser.svg'), auto;
+  cursor: url('laser.svg') 10 10, auto;
 }
 
 p {
