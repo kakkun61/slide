@@ -8,13 +8,13 @@
 
 ## もくじ
 
-- つらみ |
-- GHC 提案 |
-- Overloaded Record Fields (Redesign) |
-- `DuplicateRecordFields` |
-- `OverloadedLabels` |
-- Magic type classes |
-- Record Set Field Proposal |
+- つらみ
+- GHC 提案
+- Overloaded Record Fields (Redesign)
+- `DuplicateRecordFields`
+- `OverloadedLabels`
+- Magic type classes
+- Record Set Field Proposal
 
 ---
 
@@ -34,9 +34,11 @@ data Person =
 data Company = Company { companyName :: String }
 ```
 
+<!-- 
 Note:
 
 - 接頭辞が必要
+-->
 
 ---
 
@@ -75,9 +77,11 @@ let me = Person "Kazuki"
 #name me -- > Kazuki
 ```
 
+<!--
 Note:
 
 - シンタックスハイライトがくずれている
+-->
 
 --- 
 
@@ -119,9 +123,11 @@ hello Person { name = name } = "Hello, " ++ name ++ "."
 hello me
 ```
 
+<!--
 Note:
 
 - `name = name` と書くのはダルい
+-->
 
 ---
 
@@ -164,9 +170,11 @@ instance IsLabel "name" (Person -> String) where
 #name me :: String
 ```
 
+<!--
 Note:
 
 - 使用時、型注釈がないと `Ambiguous type variable ‘a0’ arising from a use of ‘print’`
+-->
 
 ---
 

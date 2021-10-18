@@ -1,0 +1,22 @@
+{
+  "name": "gotanda.hs-1",
+  "version": "1.0.0",
+  "description": "レコードのラベルの重複 - Gotanda.hs #1 @HERP",
+  "scripts": {
+    "make": "marp PITCHME.md",
+    "pages": "node dev/pages.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kakkun61/slide.git"
+  },
+  "author": "岡本和樹 (Kazuki Okamoto)",
+  "license": "CC-BY-NC-4.0",
+  "bugs": {
+    "url": "https://github.com/kakkun61/slide/issues"
+  },
+  "homepage": "https://github.com/kakkun61/slide",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^1.2.0"
+  }
+}

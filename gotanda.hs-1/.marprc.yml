@@ -1,0 +1,3 @@
+# .marprc.yml
+output: index.html
+html: true
