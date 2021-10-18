@@ -10,7 +10,7 @@
   - GHC 勉強会 2019
   - 2019.12.11
 - レコードのラベルの重複
-  - [スライド](https://gitpitch.com/kakkun61/gitpitch?p=gotanda.hs-1)
+  - [スライド](gotanda.hs-1)
   - [Gotanda.hs #1 @HERP](https://herp-inc.connpass.com/event/153651/)
   - 2019.11.29
 - すごい Haskell 読書会 in 大阪 #5
