@@ -2,9 +2,9 @@
 
 - 線形型の刹那的不変データ構造への利用
   - [スライド](linear-ephemeral-data-structure)
+  - [動画](https://www.youtube.com/watch?v=haZl-q6mfyk&t=6781s)
   - [Haskell Day 2021](https://haskell.jp/haskell-day-2021/)
   - 2021.11.07
-  - 作成中
 - Hadrian
   - [スライド](https://gitpitch.com/kakkun61/gitpitch?p=ghc-workshop-2019)
   - GHC 勉強会 2019
