@@ -17,6 +17,7 @@ _class: lead
 ![drop-shadow](https://kakkun61.com/profile-icon.png)
 
 - 岡本和樹
+- [kakkun61.com](https://kakkun61.com/)
 - @kakkun61 (Pawoo, mixi2, X)
 - 「趣味はデバッグ……」同人誌サークル
 
