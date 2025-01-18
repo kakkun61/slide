@@ -5,8 +5,8 @@ const out = '../../slide-pages/monad-drill-help/';
 const files = [
   'index.html',
   'theme.css',
-  'pfds.jpg',
-  'sakulambda.svg',
+  'doujin-site.png',
+  'drill-11.png',
   'laser.svg'
 ];
 
