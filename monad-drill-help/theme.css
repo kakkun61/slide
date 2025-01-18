@@ -1,0 +1,100 @@
+@import 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github-dark-dimmed.min.css';
+
+:root {
+  --hljs-github-dark-dimmed-color: #adbac7;
+  --hljs-github-dark-dimmed-background-color: #22272e;
+  --hljs-github-color: #032f62;
+  --monospace: 'Ricty Diminished', Consolas, 'Courier New', monospace;
+  --background: white;
+}
+
+section {
+  width: 1920px;
+  height: 1080px;
+  background-color: var(--background);
+  background-image: url('sakulambda.svg');
+  background-position: bottom 20px left 20px;
+  background-size: 240px 240px;
+  background-repeat: no-repeat;
+  padding-block-start: 40px;
+  padding-inline-start: 80px;
+  padding-inline-end: 80px;
+  font-family: 'メイリオ', sans-serif;
+  font-size: 50px;
+  font-weight: normal;
+  cursor: url('laser.svg') 10 10, auto;
+}
+
+p {
+  text-shadow: 0 0 4px var(--background);
+}
+
+h1 {
+  font-size: 72px;
+}
+
+h2 {
+  font-size: 64px;
+}
+
+h3 {
+  font-size: 58px;
+}
+
+code {
+  font-family: var(--monospace);
+  color: var(--hljs-github-color);
+}
+
+pre {
+  font-family: var(--monospace);
+  font-size: 88%;
+  color: lightgrey;
+  background-color: var(--hljs-github-dark-dimmed-background-color);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+pre > code {
+  color: var(--hljs-github-dark-dimmed-color);
+  background: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+li p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+section.lead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+section.lead h1 {
+  font-size: 100px;
+}
+
+section.lead h2 {
+  color: darkgrey;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 20px;
+}
+
+th {
+  border-bottom: 6px double black;
+}
+
+td {
+  border-bottom: 3px solid black;
+}
