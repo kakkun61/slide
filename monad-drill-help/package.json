@@ -1,0 +1,22 @@
+{
+  "name": "monad-drill-help",
+  "version": "1.0.0",
+  "description": "線形型の刹那的不変データ構造への利用",
+  "scripts": {
+    "make": "marp slide.md",
+    "pages": "node dev/pages.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kakkun61/slide.git"
+  },
+  "author": "岡本和樹 (Kazuki Okamoto)",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/kakkun61/slide/issues"
+  },
+  "homepage": "https://github.com/kakkun61/slide",
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4"
+  }
+}
