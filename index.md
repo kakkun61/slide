@@ -1,5 +1,13 @@
 # 岡本和樹の発表資料
 
+- PPL 2025 参加
+  - [スライド](ppl-2025/)
+  - [λ Kansai in Spring 2025](https://lambda-kansai.connpass.com/event/348567/)
+  - 2025.04.12
+- 『モナドドリル』書いてます
+  - [スライド](monad-drill-help/)
+  - [λ Kansai in Winter 2025](https://lambda-kansai.connpass.com/event/340271/)
+  - 2025.01.18
 - 線形型の刹那的不変データ構造への利用
   - [スライド](linear-ephemeral-data-structure/)
   - [動画](https://www.youtube.com/watch?v=haZl-q6mfyk&t=6781s)
