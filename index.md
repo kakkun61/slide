@@ -1,7 +1,7 @@
 # 岡本和樹の発表資料
 
 - 線形型の刹那的不変データ構造への利用
-  - [スライド](linear-ephemeral-data-structure)
+  - [スライド](linear-ephemeral-data-structure/)
   - [動画](https://www.youtube.com/watch?v=haZl-q6mfyk&t=6781s)
   - [Haskell Day 2021](https://haskell.jp/haskell-day-2021/)
   - 2021.11.07
@@ -10,7 +10,7 @@
   - GHC 勉強会 2019
   - 2019.12.11
 - レコードのラベルの重複
-  - [スライド](gotanda.hs-1)
+  - [スライド](gotanda.hs-1/)
   - [Gotanda.hs #1 @HERP](https://herp-inc.connpass.com/event/153651/)
   - 2019.11.29
 - すごい Haskell 読書会 in 大阪 #5
