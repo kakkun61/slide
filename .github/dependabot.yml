@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directories:
+      - gotanda.hs-1
+      - linear-ephemeral-data-structure
+      - ppl-2025
+    schedule:
+      interval: "weekly"
