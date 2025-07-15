@@ -3,7 +3,7 @@ index.html: PITCHME.md package.json package-lock.json
 
 .PHONY: pages
 pages: index.html
-	npm run pages
+	npm run pages $(OUT_DIR)
 
 .PHONY: head
 head:

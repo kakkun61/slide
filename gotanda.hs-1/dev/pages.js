@@ -1,13 +1,14 @@
 const fs = require('fs');
 
-const out = '../../slide-pages/gotanda.hs-1/';
+const pagesDir = process.argv[2] || '../../slide-pages/';
+const outDir = pagesDir + '/gotanda.hs-1/';
 
 const files = [
   'index.html'
 ];
 
-fs.mkdirSync(out, { recursive: true });
+fs.mkdirSync(outDir, { recursive: true });
 
 for (const file of files) {
-  fs.copyFileSync(file, out + file);
+  fs.copyFileSync(file, outDir + '/' + file);
 }

@@ -1,6 +1,7 @@
 const fs = require('fs');
 
-const out = '../../slide-pages/linear-ephemeral-data-structure/';
+const pagesDir = process.argv[2] || '../../slide-pages/';
+const outDir = pagesDir + '/linear-ephemeral-data-structure/';
 
 const files = [
   'index.html',
@@ -10,8 +11,8 @@ const files = [
   'laser.svg'
 ];
 
-fs.mkdirSync(out, { recursive: true });
+fs.mkdirSync(outDir, { recursive: true });
 
 for (const file of files) {
-  fs.copyFileSync(file, out + file);
+  fs.copyFileSync(file, outDir + '/' + file);
 }
