@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/kakkun61/slide",
   "devDependencies": {
-    "@marp-team/marp-cli": "^4.2.1"
+    "@marp-team/marp-cli": "^4.2.2"
   }
 }
