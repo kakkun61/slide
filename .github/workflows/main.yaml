@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: actions/configure-pages@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
       - run: make prepare
       - run: make OUT_DIR=slide-out
       - uses: actions/jekyll-build-pages@v1
